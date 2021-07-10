@@ -66,7 +66,14 @@ function iniciarJogo() {
     if(direction == "up") snakeY -= box; 
     if(direction == "down") snakeY +=box;  
     
-    snake.pop();
+    if(snakeX != food.x || snakeY != food.y) {/* caso a posição da snakeX seja diferende de foodX e a posição da snakeY seja diferente da foodY ela retira  o ultimo elemento da cobrina, caso não ele aumenta e gera novas comidas*/
+        snake.pop();
+    } else{
+        food.x = Math.floor(Math.random() * 15 + 1) *box;/* o Math.floor retira parte fufante(a virgula depos do número) do  Math.random */
+        food.y = Math.floor(Math.random() * 15 + 1) *box;
+    }
+
+
 
     let newHead = {
         x: snakeX,
