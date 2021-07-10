@@ -45,10 +45,20 @@ function update (event) {/* o evento é o movimento de tela */
 
 
 function iniciarJogo() {
+
     if (snake[0].x > 15 * box && direction == "right") snake[0].x = 0;/*faz a cobrinha aparecer no outro lado da tela  */
     if (snake[0].x < 0  && direction == "left") snake[0].x = 16 * box;
     if (snake[0].y > 15 * box && direction == "down") snake[0].y = 0;
     if (snake[0].y < 0  && direction == "up") snake[0].y = 16 * box;
+
+
+    for ( i = 1; i < snake.length; i++) {/*se a posição 0 se chocar com a posição 1 (que é o corpo ela vai parar o jogo e vai acionar o alert que define o fim do jogo) */
+        if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {/* se a poseção snake[0].x for exatamente igual da nossa poseção i do corpinho e a poseção y for igual x mostramos o alerta de fim de jogo  */
+            clearInterval(jogo);
+            alert('Game Over :(');
+        }
+        
+    }
 
 
 
